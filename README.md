@@ -39,7 +39,7 @@ If one of the specifications `heating_from_hour` or `heating_to_hour` is not giv
 | heating_to_hour   | False    | End time to which the heating is to last                    |
 | hvac_active       | False    | The hvac_mode when active *(defaults to heat)*              |
 | preset_away       | False    | The preset_mode when away/eco *(defaults to Heat Eco)*      |
-
+| season            | False    | Add season you only want to work in                         |
 ## Service Example
 
 The following is the content of a [service call](https://www.home-assistant.io/docs/scripts/service-calls/).
@@ -57,11 +57,18 @@ data:
     - binary_sensor.climate_on
     - binary_sensor.livingroom_climate_on
   sensor_presence: binary_sensor.someone_at_home
+  season:
+    - winter
+    - autumn
   heating_from_hour: 8
   heating_to_hour: 17
   hvac_active: heat
   preset_away: away
 ```
+
+season: let add the season you only want it to work in
+
+
 
 ## Automation example
 
@@ -94,6 +101,9 @@ To use different devices, you may want to change `hvac_active` and `preset_away`
           - input_boolean.livingroom_climate
           - binary_sensor.all_climates_on
         sensor_presence: binary_sensor.presence
+        season:
+         - winter
+         - autumn
         heating_from_hour: 8
         heating_to_hour: 23
       service: python_script.update_climate
