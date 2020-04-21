@@ -108,3 +108,11 @@ To use different devices, you may want to change `hvac_active` and `preset_away`
         heating_to_hour: 23
       service: python_script.update_climate
 ```
+## MUST HAVE
+
+you must that the season sensor
+
+```yaml
+sensor:
+  - platform: season
+```
