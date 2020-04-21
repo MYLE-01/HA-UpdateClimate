@@ -17,12 +17,21 @@ SENSOR_PRESENCE = data.get("sensor_presence", None)
 HEATING_FROM_HOUR = data.get("heating_from_hour", None)
 HEATING_TO_HOUR = data.get("heating_to_hour", None)
 
+# added Season
+SENSOR_SEASON = data.get("season",[])
+
 HVAC_OFF = "off"
 PRESET_NONE = "none"
 HVAC_ACTIVE = data.get("hvac_active", "heat")
 PRESET_AWAY = data.get("preset_away", "Heat Eco")
 
 SERVICE_DATA = {"entity_id": ENTITY_ID}
+
+# read in the Season
+# note: MUST have season Sensor
+state_season = hass.states.get('sensor.season')
+current_season = state_season.state
+
 
 
 def is_time_between(begin_time, end_time) -> bool:
@@ -46,7 +55,16 @@ for window in SENSORS_WINDOWS:
     # We invert this statement to catch 'None' as well
     if hass.states.is_state(window, SENSOR_ON):
         bool_off = True
+        
+# Lets Check to see if we in right season
+for season in SENSOR_SEASON
+    if not season = current_season
+        bool_off = True
+        logger.info("WRONG SEASON")
+    else logger.info("we in right season")
 
+        
+        
 # presence is true if not set or unavailable
 bool_presence = (
     True
