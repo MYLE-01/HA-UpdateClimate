@@ -32,25 +32,44 @@ If one of the specifications `heating_from_hour` or `heating_to_hour` is not giv
 | Name              | Required | Description                                                 |
 | ----------------- | -------- | ----------------------------------------------------------- |
 | entity_id         | True     | The climates enitity_id                                     |
-| windows           | False    | The climate will be off when one of these sensors is on     |
+| sensors_on        | False    | The climate will be off when one of these sensors is on     |
 | sensors_off       | False    | The climate will be off when one of these sensors is off    |
 | sensor_presence   | False    | The climate will switch to active mode if this sensor is on |
 | heating_from_hour | False    | Start time from which heating is to start                   |
 | heating_to_hour   | False    | End time to which the heating is to last                    |
 | hvac_active       | False    | The hvac_mode when active *(defaults to heat)*              |
 | preset_away       | False    | The preset_mode when away/eco *(defaults to Heat Eco)*      |
-| season            | False    | Add season you only want to work in                         |
 ## Service Example
 
 The following is the content of a [service call](https://www.home-assistant.io/docs/scripts/service-calls/).
 This example includes all possible parameters.
 You may not need them all.
 
+me was not getting the window logic
+
+so
+
+I have change it 
+
+sensors_on and sensors_off
+
+meaning:
+
+ all sensors_on must be ON
+ 
+ all sensors_off must be OFF
+ 
+ if one not in the right state then logic is wrong (true)
+
+
+
+
+
 ```yaml
 service: python_script.update_climate
 data:
   enitity_id: climate.livingroom
-  windows:
+  sensors_on:
     - binary_sensor.livingroom_window
     - binary_sensor.livingroom_door
   sensors_off:
