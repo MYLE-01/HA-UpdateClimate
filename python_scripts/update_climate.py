@@ -1,6 +1,3 @@
-
-
-
 DOMAIN = "climate"
 
 SENSOR_ON = "on"
