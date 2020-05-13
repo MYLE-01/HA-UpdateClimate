@@ -55,19 +55,11 @@ if not ENTITY_ID:
 # extract states
 bool_off = False
 
-logger.info(" Start  %s ===========================",bool_off)
-
-
-logger.info("SENSORS_OFF  %s ===========================",SENSORS_OFF)
-
 for sensor_off in SENSORS_OFF:
     if hass.states.is_state(sensor_off, SENSOR_ON):
         logger.info("%s = OFF",sensor_off)
         bool_off = True
 
-logger.info("SENSORS_OFF  %s ===========================",bool_off)
-
-logger.info("SENSORS_ON %s ===========================",SENSORS_ON)
 
 for window in SENSORS_ON:
     # We invert this statement to catch 'None' as well
@@ -75,7 +67,6 @@ for window in SENSORS_ON:
         logger.info("%s = ON",window)
         bool_off = True
 
-logger.info("SENSORS_ON  %s ===========================",bool_off)
 
 
 
@@ -91,24 +82,18 @@ logger.info("season  %s ===========================",bool_off)
 
 # presence is true if not set or unavailable
 
-logger.info("bool_presence  %s ===========================",SENSOR_PRESENCE)
 
 bool_presence = (
     True
     if SENSOR_PRESENCE is None
     else not hass.states.is_state(SENSOR_PRESENCE, SENSOR_OFF)
 )
-logger.info("bool_presence  %s ===========================",bool_presence)
 
 state_climate = hass.states.get(ENTITY_ID)
 current_state = state_climate.state
 current_preset = state_climate.attributes.get(ATTR_PRESET_MODE, PRESET_NONE)
 
 
-logger.info("DOING THE LOGIC")
-
-
-logger.info("What is it  bool_off  %s =====",bool_off)
 # set modes
 if bool_off:
     # The heater should be off
@@ -128,10 +113,6 @@ else:
             datetime.time(hour=HEATING_FROM_HOUR), datetime.time(hour=HEATING_TO_HOUR),
         )
     ):
-        logger.info("================================================")
-        logger.info("Hours and bool_presence GOOD")
-        logger.info("================================================")
-
         # The heater should be in heating mode
         logger.info("Set %s to %s", ENTITY_ID, HVAC_ACTIVE)
         SERVICE_DATA[ATTR_HVAC_MODE] = HVAC_ACTIVE
