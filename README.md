@@ -102,19 +102,17 @@ To use different devices, you may want to change `hvac_active` and `preset_away`
     - hours: "*"
       minutes: "1"
       platform: time_pattern
-    - entity_id: binary_sensor.presence
-      platform: state
-    - entity_id: binary_sensor.livingroom_window
-      platform: state
-    - entity_id: input_boolean.livingroom_climate
-      platform: state
-    - entity_id: binary_sensor.all_climates_on
+    - entity_id: 
+        - binary_sensor.presence
+        - binary_sensor.livingroom_window
+        - input_boolean.livingroom_climate
+        - binary_sensor.all_climates_on
       platform: state
   condition: []
   action:
     - data:
         entity_id: climate.livingroom
-        windows:
+        sensors_on:
           - binary_sensor.livingroom_window
         sensors_off:
           - input_boolean.livingroom_climate
