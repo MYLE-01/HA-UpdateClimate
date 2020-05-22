@@ -32,8 +32,8 @@ If one of the specifications `heating_from_hour` or `heating_to_hour` is not giv
 | Name              | Required | Description                                                 |
 | ----------------- | -------- | ----------------------------------------------------------- |
 | entity_id         | True     | The climates enitity_id                                     |
-| sensors_on        | False    | The climate will be off when one of these sensors is on     |
-| sensors_off       | False    | The climate will be off when one of these sensors is off    |
+| sensors_on        | False    | The climate will be off when one of these sensors is off    |
+| sensors_off       | False    | The climate will be off when one of these sensors is on     |
 | sensor_presence   | False    | The climate will switch to active mode if this sensor is on |
 | heating_from_hour | False    | Start time from which heating is to start                   |
 | heating_to_hour   | False    | End time to which the heating is to last                    |
@@ -42,21 +42,20 @@ If one of the specifications `heating_from_hour` or `heating_to_hour` is not giv
 
 
 me was not getting the window logic
-
 so
-
 I have change it 
 
 sensors_on and sensors_off
 
 meaning:
 
- all sensors_on must be ON
+all sensors_on must be ON
  
- all sensors_off must be OFF
+all sensors_off must be OFF
  
- if one not in the right state then logic is wrong (true)
+if one not in the right state then logic is wrong (true)
 
+22 may got the seson logic right (leaning Python here)
 
 ## Service Example
 
@@ -89,9 +88,7 @@ data:
   preset_away: away
 ```
 
-season: let add the season you only want it to work in
-
-
+season: lets you add a season you only want it to work in
 
 ## Automation example
 
