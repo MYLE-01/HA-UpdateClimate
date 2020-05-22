@@ -22,7 +22,8 @@ This python script sets `hvac_mode` and `preset_mode` according to the specified
 The `hvac_mode` will be _off_ when:
 
 - At least one window is open
-- At least one of the given `sensors_off` is _off_
+- At least one of the given `sensors_off` is _on_
+- At least one of the given `sensors_on` is _off_
 
 In all other cases the `hvac_mode` will be the one specified in `hvac_active`.
 The `preset_mode` is None if the `sensor_presence` is _on_ or not given and the current time is between `heating_from_hour` and `heating_to_hour`.
@@ -55,12 +56,16 @@ all sensors_off must be OFF
  
 if one not in the right state then logic is wrong (true)
 
-22 may got the seson logic right (leaning Python here)
+22 may:  got the seson logic right (leaning Python here)
+
+```python
+for season in SENSOR_SEASON:
+    if season not in SENSOR_SEASON:
+        bool_off = True
+```
+
 
 ## Service Example
-
-
-
 
 
 The following is the content of a [service call](https://www.home-assistant.io/docs/scripts/service-calls/).
