@@ -68,17 +68,9 @@ for window in SENSORS_ON:
         bool_off = True
 
 
-
-
-logger.info("SENSOR_SEASON  %s ===========================",SENSOR_SEASON)
-# Lets Check to see if we in right season
-#for season in SENSOR_SEASON:
-#    if season == current_season:
-#        bool_off = True
-#        break
-
-
-logger.info("season  %s ===========================",bool_off)
+for season in SENSOR_SEASON:
+    if season not in SENSOR_SEASON:
+        bool_off = True
 
 # presence is true if not set or unavailable
 
