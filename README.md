@@ -39,11 +39,7 @@ If one of the specifications `heating_from_hour` or `heating_to_hour` is not giv
 | heating_to_hour   | False    | End time to which the heating is to last                    |
 | hvac_active       | False    | The hvac_mode when active *(defaults to heat)*              |
 | preset_away       | False    | The preset_mode when away/eco *(defaults to Heat Eco)*      |
-## Service Example
 
-The following is the content of a [service call](https://www.home-assistant.io/docs/scripts/service-calls/).
-This example includes all possible parameters.
-You may not need them all.
 
 me was not getting the window logic
 
@@ -62,7 +58,15 @@ meaning:
  if one not in the right state then logic is wrong (true)
 
 
+## Service Example
 
+
+
+
+
+The following is the content of a [service call](https://www.home-assistant.io/docs/scripts/service-calls/).
+This example includes all possible parameters.
+You may not need them all.
 
 
 ```yaml
